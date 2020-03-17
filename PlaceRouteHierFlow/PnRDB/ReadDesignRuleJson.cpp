@@ -136,6 +136,8 @@ void PnRdatabase::ReadPDKJSON(std::string drfile) {
             int lvencpl= layer["VencP_L"];
             std::cout<<"Reading Json PDK on "<<"VencP_H"<<std::endl;
             int lvencph= layer["VencP_H"];
+            std::cout<<"Reading Json PDK on "<<"MinNo"<<std::endl;
+            int MinNo = layer["MinNo"];
 
             double R = 0;
             #ifdef FinFET_MOCK_PDK
@@ -159,6 +161,7 @@ void PnRdatabase::ReadPDKJSON(std::string drfile) {
             tmp_via.dist_ss=times*lspacex;
             tmp_via.dist_ss_y=times*lspacey;
             tmp_via.R = R;
+            tmp_via.MinNo = MinNo;
 	    {
 	      assert( stackAry.size() == 2);
 
@@ -203,6 +206,7 @@ void PnRdatabase::ReadPDKJSON(std::string drfile) {
 	     const auto &vs = viaSet[name2ViaLayerMap[temp_viamodel.name]];
 
              temp_viamodel.ViaIdx = i;
+             temp_viamodel.MinNo = vs.MinNo;
              temp_viamodel.LowerIdx = vs.lower_metal_index;
              temp_viamodel.UpperIdx = vs.upper_metal_index;
 

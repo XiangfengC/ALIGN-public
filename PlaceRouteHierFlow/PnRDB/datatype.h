@@ -480,6 +480,7 @@ struct designRule {
 /// PArt 6: uniform DRC rule
 struct ViaModel {
   string name;
+  int MinNo;
   int ViaIdx, LowerIdx, UpperIdx; //lower metal idx and upper metal idx
   std::vector<point> ViaRect, LowerRect, UpperRect; //LL and UR of Via, center is (0,0), LowerRect and UpperRect are Rects considering enclosure
   double R;
@@ -524,6 +525,7 @@ struct via_info {
   int dist_ss; //via spacing, X direction spacing
   int dist_ss_y; // Y direction spacing
   double R;
+  int MinNo;
   GdsDatatype gds_datatype;
 };
 
